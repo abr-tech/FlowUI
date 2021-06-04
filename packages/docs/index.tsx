@@ -6,8 +6,8 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import Router from './pages/router'
 
-export { default as Menu } from './components/Menu'
-export { default as Sidebar } from './components/Sidebar'
+export { default as Menu } from './components/TopBar'
+export { default as Sidebar } from './components/TopBar/Menu'
 
 declare global {
   interface Window {
@@ -22,7 +22,7 @@ window.jsx = jsx
 window.breakpoints = [960, 768]
 
 const Docs = () => {
-  const [theme, setTheme] = useState<SystemTypes.Theme>(defaultThemes.light)
+  const [theme, setTheme] = useState<Stage.Theme>(defaultThemes.light)
 
   useEffect(() => {
     localStorage.setItem('current_theme', theme.name.toLowerCase())

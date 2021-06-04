@@ -4,26 +4,22 @@ import React from 'react'
 import BreakpointifyFeature from './Features/Breakpointify'
 
 const PropName = (props: { property: Property }) => {
-    const { property } = props
-    
-    const name = (
-        <Text m={0} pb={'0.5rem'}>
-            {property.name}
-            {property.flags.isOptional === false && (
-                <Text textColor="error">
-                    <sup>*</sup>
-                </Text>
-            )}
+  const { property } = props
+
+  const name = (
+    <Text m={0} pb="0.5rem">
+      {property.name}
+      {property.flags.isOptional === false && (
+        <Text textColor="error">
+          <sup>*</sup>
         </Text>
-    )
-    if (property.tags?.hasOwnProperty('breakpointify')) {
-        return (
-            <BreakpointifyFeature
-                children={name}
-            />
-        )
-    }
-    return name
+      )}
+    </Text>
+  )
+  if (property.tags?.hasOwnProperty('breakpointify')) {
+    return <BreakpointifyFeature>{name}</BreakpointifyFeature>
+  }
+  return name
 }
 
 export default PropName

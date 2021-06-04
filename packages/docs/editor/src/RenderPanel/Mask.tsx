@@ -7,7 +7,7 @@ import { ArchitectItem } from '../../types'
 import styles from './styles'
 
 type MaskProps = {
-  color: (color: SystemTypes.Theme['color']) => string
+  color: (color: Stage.Theme['color']) => string
   item?: ArchitectItem | null
 }
 export type MaskRefs = {

@@ -5,7 +5,7 @@ type State = {
   lockY: boolean
   lockC: boolean
 }
-export default (theme: SystemTypes.Theme, state: State) => {
+export default (theme: Stage.Theme, state: State) => {
   const { lockX, lockY, lockC } = state
 
   return {

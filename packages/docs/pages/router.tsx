@@ -1,13 +1,13 @@
 import { Text } from '@stage-ui/core'
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import Page from '../components/Page'
-import Page404 from './404'
 import core from '../utils/core'
+import Page404 from './404'
 
 interface RouterProps {
-  theme: SystemTypes.Theme
-  defaultThemes: Record<string, SystemTypes.Theme>
-  setTheme: React.Dispatch<React.SetStateAction<SystemTypes.Theme>>
+  theme: Stage.Theme
+  defaultThemes: Record<string, Stage.Theme>
+  setTheme: React.Dispatch<React.SetStateAction<Stage.Theme>>
 }
 
 core.init()

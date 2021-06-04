@@ -1,8 +1,7 @@
-import { Badge, Button, Grid, Flexbox, Header, Paragraph, Text, useTheme } from '@stage-ui/core'
+import { Badge, Button, Flexbox, Grid, Header, Paragraph, Text, useTheme } from '@stage-ui/core'
 import { Moon } from '@stage-ui/icons'
 import React from 'react'
 import { CustomPageProps } from '../../utils/core'
-import ThemeSwitcher from '../../components/Menu/ThemeSwitcher'
 
 export default (props: CustomPageProps) => {
   const theme = useTheme()

@@ -7,7 +7,7 @@ export type AddPanelStyles = {
   component: (focused: boolean) => SerializedStyles
 }
 
-export default (theme: SystemTypes.Theme): AddPanelStyles => {
+export default (theme: Stage.Theme): AddPanelStyles => {
   return {
     backgroundLayer: css({
       zIndex: 10,

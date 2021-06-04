@@ -20,7 +20,7 @@ function getFile(data: string, filename: string) {
   }
 }
 
-const themeExport = (theme: SystemTypes.Theme) => {
+const themeExport = (theme: Stage.Theme) => {
   let fileDataRaw = ''
 
   for (let row of template) {

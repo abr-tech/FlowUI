@@ -3,15 +3,15 @@ import { jsx } from '@emotion/react'
 import { Flexbox, Header, Link, Paragraph } from '@stage-ui/core'
 import { Github } from '@stage-ui/icons'
 
-import ThemeSwitcher from '../../../components/Menu/ThemeSwitcher'
+import ThemeSwitcher from '../../../components/TopBar/ThemeSwitcher'
 import styles from './styles'
 
 interface HeaderPanelProps {
   title?: string
   git?: string
-  themes: Record<string, SystemTypes.Theme>
-  currentTheme: SystemTypes.Theme
-  setTheme: (theme: SystemTypes.Theme) => void
+  themes: Record<string, Stage.Theme>
+  currentTheme: Stage.Theme
+  setTheme: (theme: Stage.Theme) => void
   setIndex: () => void
 }
 

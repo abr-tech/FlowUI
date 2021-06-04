@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 
-export default (theme: SystemTypes.Theme) => {
+export default (theme: Stage.Theme) => {
   return {
     container: {},
     scrollView: css({

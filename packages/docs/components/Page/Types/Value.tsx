@@ -1,54 +1,57 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/react'
 import { Flexbox, Link, Text } from '@stage-ui/core'
-import TextTypes from '@stage-ui/core/content/Text/types'
+import TextTypes from '@stage-ui/core/components/content/Text/types'
 import { OType, Property } from '@stage-ui/docs/utils/types'
+import React from 'react'
 
 // import { ValueDefinition } from '@stage-ui/docs/components/Page/Types/Interface'
 // interface ValueProps {
 //     type: ValueDefinition,
 // }
 
-const LightText = (props: { children: string }) => <Text size="xs" color={(c) => c.hard} children={props.children} />
+type BadgeProps = {
+  text: string
+  textColor?: TextTypes.Props['textColor']
+  backgroundColor?: TextTypes.Props['backgroundColor']
+}
+
+const LightText = (props: { children: string }) => (
+  <Text size="xs" color="hard">
+    {props.children}
+  </Text>
+)
+
+const Badge: React.FC<BadgeProps> = ({ text, ...textProps }) => (
+  <Text
+    h="fit-content"
+    size="xs"
+    p=".125rem 0.25rem"
+    mx=".125rem"
+    mb=".25rem"
+    backgroundColor={(c) => {
+      switch (text) {
+        case 'number':
+          return c.success.alpha(0.2)
+        case 'boolean':
+          return c.primary.alpha(0.2)
+        case 'string':
+          return c.error.alpha(0.2)
+        case 'function':
+          return c.primary.alpha(0.3)
+        default:
+          return c.onSurface.alpha(0.1)
+      }
+    }}
+    {...textProps}
+    css={{ borderRadius: '.25rem' }}
+  >
+    {text}
+  </Text>
+)
 
 const Value = (props: { property: Property }) => {
   const { property } = props
 
   let values: JSX.Element[] = []
-
-  const Badge = (props: {
-    text: string
-    textColor?: TextTypes.Props['textColor']
-    backgroundColor?: TextTypes.Props['backgroundColor']
-  }) => (
-    <Text
-      h="fit-content"
-      size="xs"
-      p=".125rem 0.25rem"
-      mx=".125rem"
-      mb=".25rem"
-      textColor={props.textColor}
-      backgroundColor={
-        props.backgroundColor ||
-        ((c) => {
-          switch (props.text) {
-            case 'number':
-              return c.success.alpha(0.2)
-            case 'boolean':
-              return c.primary.alpha(0.2)
-            case 'string':
-              return c.error.alpha(0.2)
-            case 'function':
-              return c.primary.alpha(0.3)
-            default:
-              return c.onSurface.alpha(0.1)
-          }
-        })
-      }
-      css={{ borderRadius: '.25rem' }}
-      children={`${props.text}`}
-    />
-  )
 
   const { value, tags } = property
 

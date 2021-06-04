@@ -8,7 +8,7 @@ export type StyleTypes = {
   tag: SerializedStyles
 }
 
-const createTheme: (theme: SystemTypes.Theme) => StyleTypes = (theme) => ({
+const createTheme: (theme: Stage.Theme) => StyleTypes = (theme) => ({
   container: css({
     width: '20rem',
     borderRight: `1px solid ${theme.color.lightest}`,

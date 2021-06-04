@@ -13,7 +13,7 @@ export const componentsTypography = ['Header', 'Display', 'Paragraph', 'Link', '
 
 interface RenderItemProps {
   item: ArchitectItem
-  theme: SystemTypes.Theme
+  theme: Stage.Theme
   mask: {
     hover: RefObject<MaskRefs>
     target: RefObject<MaskRefs>

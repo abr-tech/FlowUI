@@ -8138,7 +8138,7 @@ declare module 'misc/hocs/Field/styles' {
 	;
 	import Types from '@stage-ui/core/components/basic/Field/types'; type ExtractFunction<T> = {
 	    [K in keyof T]: Extract<T[K], Function>;
-	}; const fieldStyles: <T extends Types.Styles<{}>>(props: Omit<Types.Props, 'onChange'>, theme: SystemTypes.Theme, stylePatch?: Partial<ExtractFunction<SystemTypes.Styles<T>>> | undefined) => SystemTypes.Styles<Types.Styles>;
+	}; const fieldStyles: <T extends Types.Styles<{}>>(props: Omit<Types.Props, 'onChange'>, theme: Stage.Theme, stylePatch?: Partial<ExtractFunction<SystemTypes.Styles<T>>> | undefined) => SystemTypes.Styles<Types.Styles>;
 	export default fieldStyles;
 
 }
@@ -9106,7 +9106,7 @@ declare module 'misc/utils/applyLayoutDecoration' {
 	;
 	export type LayoutDecoration = 'surface' | 'minorShadow' | 'mediumShadow' | 'majorShadow' | 'skeleton'; type Props = SystemTypes.AllProps<HTMLDivElement, {}> & {
 	    decoration?: LayoutDecoration;
-	}; const applyLayoutDecoration: (props: Props, theme: SystemTypes.Theme) => {
+	}; const applyLayoutDecoration: (props: Props, theme: Stage.Theme) => {
 	    background: string;
 	    borderRadius: string;
 	    borderWidth: string;
@@ -10595,7 +10595,7 @@ declare module 'types' {
 
 }
 declare module 'misc/themes/light' {
-	; const _default: SystemTypes.Theme;
+	; const _default: Stage.Theme;
 	export default _default;
 
 }
@@ -10633,7 +10633,7 @@ declare module 'layout/Viewport/types' {
 	         * Defines which theme to put in context.
 	         * @default light
 	         */
-	        theme?: 'dark' | 'light' | SystemTypes.Theme;
+	        theme?: 'dark' | 'light' | Stage.Theme;
 	        /**
 	         * Set global CSS
 	         */
@@ -10650,8 +10650,8 @@ declare module 'layout/Viewport/types' {
 	        container: void;
 	    }
 	    interface Themes {
-	        light: SystemTypes.Theme;
-	        dark: SystemTypes.Theme;
+	        light: Stage.Theme;
+	        dark: Stage.Theme;
 	    }
 	    interface MountArea {
 	        className?: string;
@@ -10661,7 +10661,7 @@ declare module 'layout/Viewport/types' {
 	        children: React.ReactElement;
 	    }
 	    interface Context {
-	        theme: SystemTypes.Theme;
+	        theme: Stage.Theme;
 	    }
 	}
 	export default ViewportTypes;

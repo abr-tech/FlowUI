@@ -1,13 +1,9 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/react'
 import { Block, Flexbox, Header, Paragraph, ScrollView } from '@stage-ui/core'
-import React, { Fragment } from 'react'
-import { PageType, Config, PagesType } from '../../utils/core'
+import React from 'react'
+import { Config, PagesType, PageType } from '../../utils/core'
+import TopBar from '../TopBar'
 import Editor from './Editor'
 import Types from './Types'
-
-import Menu from '../Menu'
-import Sidebar from '../Sidebar'
 
 interface ContentProps {
   data: PageType
@@ -15,33 +11,30 @@ interface ContentProps {
   config: Config
   path: string
   setPath: React.Dispatch<React.SetStateAction<string>>
-  theme: SystemTypes.Theme
-  themes: Record<string, SystemTypes.Theme>
-  setTheme: React.Dispatch<React.SetStateAction<SystemTypes.Theme>>
+  theme: Stage.Theme
+  themes: Record<string, Stage.Theme>
+  setTheme: React.Dispatch<React.SetStateAction<Stage.Theme>>
 }
 
-const Page = (props: ContentProps) => {
+const Page: React.FC<ContentProps> = (props) => {
   const { data, pages, config, setTheme, themes, theme, setPath } = props
 
   return (
     <>
-      <Menu
-        title={config.name}
-        setIndex={() => setPath('/')}
-        themes={themes}
-        currentTheme={theme}
-        setTheme={setTheme}
-        git={config.git}
-      />
       <Flexbox h="100vh" css={{ boxSizing: 'border-box', overflow: 'hidden' }}>
-        <Sidebar currentPage={data} pages={pages} onChange={(pageURL) => setPath(pageURL)} />
-        <ScrollView h="100vh" w="100%" backgroundColor={(c) => c.surface}>
-          <Flexbox
-            flex={1}
-            p={['3rem 4rem 1.5rem 4rem', '3rem 4rem 1.5rem 4rem', '1rem']}
-            justifyContent="center"
-            // w={['auto','auto','auto','100vw']}
-          >
+        <ScrollView h="100vh" w="100%" backgroundColor="surface">
+          <TopBar
+            title={config.name}
+            setIndex={() => setPath('/')}
+            themes={themes}
+            currentTheme={theme}
+            setTheme={setTheme}
+            git={config.git}
+            currentPage={data}
+            pages={pages}
+            onChange={(pageURL) => setPath(pageURL)}
+          />
+          <Flexbox flex={1} p={['3rem 4rem 1.5rem 4rem', '3rem 4rem 1.5rem 4rem', '1rem']} justifyContent="center">
             <Block
               css={{
                 width: '100%',
@@ -57,8 +50,10 @@ const Page = (props: ContentProps) => {
                       maxWidth: data.cases === void 0 ? '45rem' : '100%',
                     }}
                   >
-                    <Header my={0} size="xl" weight={800} children={data.title} />
-                    {data.subtitle && <Paragraph weight={500} children={data.subtitle} />}
+                    <Header my={0} size="xl" weight={800}>
+                      {data.title}
+                    </Header>
+                    {data.subtitle && <Paragraph weight={500}>{data.subtitle}</Paragraph>}
                   </Block>
                 )}
                 {data.cases && <Editor cases={data.cases} />}
@@ -68,8 +63,9 @@ const Page = (props: ContentProps) => {
                       width: '100%',
                       maxWidth: '45rem',
                     }}
-                    children={<data.default />}
-                  />
+                  >
+                    <data.default />
+                  </Block>
                 )}
               </Flexbox>
               {data.ns && <Types nameSpace={data.ns} config={config} shrink={data.cases === void 0} />}

@@ -47,8 +47,8 @@ type AssetItem = {
 }
 
 interface ThemeConfiguratorProps {
-  original: SystemTypes.Theme
-  updateTheme: React.Dispatch<React.SetStateAction<SystemTypes.Theme>>
+  original: Stage.Theme
+  updateTheme: React.Dispatch<React.SetStateAction<Stage.Theme>>
 }
 
 const ThemeConfigurator = (props: ThemeConfiguratorProps) => {

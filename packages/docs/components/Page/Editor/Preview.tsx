@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx } from '@emotion/react'
 import * as CoreScope from '@stage-ui/core'
 import { Block } from '@stage-ui/core'
 import * as IconScope from '@stage-ui/icons'
@@ -21,7 +19,7 @@ Object.assign(window, {
 })
 
 interface PreviewProps {
-  theme: SystemTypes.Theme
+  theme: Stage.Theme
   code: string
   grid: boolean
   fullscreen: boolean
@@ -68,7 +66,6 @@ const Preview = (props: PreviewProps) => {
             '&::before': {
               content: "''",
               position: 'absolute',
-              // zIndex: -1,
               left: 0,
               right: 0,
               bottom: 0,
@@ -87,10 +84,10 @@ const Preview = (props: PreviewProps) => {
           },
         ]}
       >
-        <span
-          style={{ position: 'relative', display: 'block', height: '100%' }}
-          children={Function(`"use strict";return (${traspiledCode})`)()}
-        />
+        <span style={{ position: 'relative', display: 'block', height: '100%' }}>
+          {/* eslint-disable-next-line */}
+          {Function(`"use strict";return (${traspiledCode})`)()}
+        </span>
       </Block>
     </Block>
   )

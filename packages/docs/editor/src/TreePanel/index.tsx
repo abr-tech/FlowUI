@@ -9,7 +9,7 @@ import { default as LayersTab, default as PagesTab } from './layers'
 import createStyles, { StyleTypes } from './styles'
 
 export type TabProps = {
-  theme: SystemTypes.Theme
+  theme: Stage.Theme
   styles: StyleTypes
 }
 

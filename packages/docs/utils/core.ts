@@ -6,15 +6,15 @@ export interface CustomPageProps {
   pages: PagesType
   path: string
   setPath: React.Dispatch<React.SetStateAction<string>>
-  theme: SystemTypes.Theme
-  themes: Record<string, SystemTypes.Theme>
-  setTheme: React.Dispatch<React.SetStateAction<SystemTypes.Theme>>
+  theme: Stage.Theme
+  themes: Record<string, Stage.Theme>
+  setTheme: React.Dispatch<React.SetStateAction<Stage.Theme>>
 }
 
 export interface Config {
   name?: string
   git?: string
-  themes?: Record<string, SystemTypes.Theme>
+  themes?: Record<string, Stage.Theme>
   pages?: {
     order?: Record<string, string[]>
     types?: {
