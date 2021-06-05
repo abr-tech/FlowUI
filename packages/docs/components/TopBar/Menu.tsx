@@ -60,12 +60,7 @@ const TopBarMenu = (props: TopBarMenuProps) => {
         }}
       >
         {!!section && (
-          <Grid
-            p="m"
-            decoration="minorShadow"
-            gap="1rem"
-            templateColumns={`repeat(${pages[section].length > 2 ? 3 : 2}, 1fr)`}
-          >
+          <Flexbox p="m" decoration="minorShadow">
             {pages[section].map((item) => (
               <Button
                 key={item.id}
@@ -77,19 +72,26 @@ const TopBarMenu = (props: TopBarMenuProps) => {
                   setSection('')
                 }}
                 p="s"
-                w="15rem"
               >
-                <Flexbox flex={1} alignItems="flex-start" column h="100%">
-                  <Header size="xs" m={0} color="primary" weight={700}>
+                <Flexbox flex={1} alignItems="center" column m="s">
+                  <Flexbox
+                    w="3rem"
+                    h="3rem"
+                    css={{
+                      background: `url(${require(`./glyphs/${item.title}.svg`)}) no-repeat`,
+                      backgroundSize: 'contain',
+                    }}
+                  />
+                  <Text display="block" size="m" m={0} weight={500} color="onSurface">
                     {item.title}
-                  </Header>
-                  <Text mt="xs" size="xs" color="light" capitalize css={{ whiteSpace: 'initial' }}>
-                    {item.subtitle}
                   </Text>
+                  {/* <Text mt="xs" size="xs" color="light" capitalize css={{ whiteSpace: 'initial' }}>
+                    {item.subtitle}
+                  </Text> */}
                 </Flexbox>
               </Button>
             ))}
-          </Grid>
+          </Flexbox>
         )}
       </Drop>
     </>
